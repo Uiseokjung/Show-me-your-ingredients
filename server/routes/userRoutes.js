@@ -1,14 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const admin = require("firebase-admin");
-const middlewares = require("../middlewares");
+const middlewares = require("../middlewares"); // middlewares 모듈을 가져옴
 const databaseService = require("../services/databaseService");
 
-// 미들웨어
-middlewares(router);
+// 인증 미들웨어
+const authenticateUser = middlewares.authenticateUser; // middlewares에서 authenticateUser 미들웨어 함수를 가져옴
 
 // 사용자 프로필 조회
-router.get("/:userId/profile", async (req, res) => {
+router.get("/:userId/profile", authenticateUser, async (req, res) => {
   const userId = req.params.userId;
 
   try {
@@ -23,7 +23,7 @@ router.get("/:userId/profile", async (req, res) => {
   }
 });
 
-router.put("/:userId/profile", async (req, res) => {
+router.put("/:userId/profile", authenticateUser, async (req, res) => {
   const userId = req.params.userId;
   const updatedProfile = req.body.updatedProfile;
 

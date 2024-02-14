@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const admin = require("firebase-admin");
 const middlewares = require("../middlewares");
+const databaseService = require("../services/databaseService");
 
 // 미들웨어
 middlewares(router);
