@@ -8,12 +8,12 @@ async function getRemcommendRecipes(ingredients) {
 
 // Edamam Recipe Search API 요청에 필요한 APP_ID와 인증 키
 const APP_ID = "bbeb467d";
-const APP_KEY = "abbdd85c73056820f61ed273486c51ab	—";
+const APP_KEY = "abbdd85c73056820f61ed273486c51ab";
 
 async function searchFoodInfo(foodName) {
   try {
     // Edamam REcipe Search API에 요청을 보내기 위한 URL
-    const url = `https://api.edamam.com/search?q=${foodName}&app_id=${APP_ID}$app_key=${APP_KEY}&to=1`;
+    const url = `https://api.edamam.com/search?q=${foodName}&app_id=${APP_ID}&app_key=${APP_KEY}&to=1`;
 
     // API 요청 보내기
     const response = await axios.get(url);
@@ -50,7 +50,7 @@ async function searchYouTube(query) {
           type: "video",
           part: "snippet",
           maxResults: 1,
-          key: AIzaSyBEwO5QkUkk6q775cXpRpKdD_q02LKuY8U, // 여기에 유튜브 API 키 추가
+          key: "AIzaSyBEwO5QkUkk6q775cXpRpKdD_q02LKuY8U", // 여기에 유튜브 API 키 추가
         },
       }
     );
