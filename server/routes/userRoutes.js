@@ -1,25 +1,33 @@
 const express = require("express");
 const router = express.Router();
-const admin = require("firebase-admin");
 const middlewares = require("../middlewares"); // middlewares 모듈을 가져옴
 const {
   getFirestore,
-  collection,
   doc,
   getDoc,
   updateDoc,
 } = require("firebase/firestore/lite");
 const firebaseApp = require("../firebaseConfig");
+const { getAuth } = require("firebase/auth");
 
 // Firebase Firestore 초기화
 const db = getFirestore(firebaseApp);
+// Firebase 인증 객체
+const auth = getAuth(firebaseApp);
+
 // 인증 미들웨어
-// TO:DO
+middlewares(router);
+
 // 사용자 프로필 조회
 router.get("/:userId/profile", async (req, res) => {
   const userId = req.params.userId;
 
   try {
+    // 사용자 인증 확인
+    const user = auth.currentUser;
+    if (!user) {
+      return res.status(401).json({ error: "Unauthorized" });
+    }
     // Firestore에서 사용자 정보 조회
     const userRef = doc(db, "users", userId);
     const userDoc = await getDoc(userRef);
@@ -42,6 +50,11 @@ router.put("/:userId/profile", async (req, res) => {
   const updatedProfile = req.body.updatedProfile;
 
   try {
+    // 사용자 인증 확인
+    const user = auth.currentUser;
+    if (!user) {
+      return res.status(401).json({ error: "Unauthorized" });
+    }
     // Firestore에서 사용자 문서 업데이트
     const userRef = doc(db, "users", userId);
     await updateDoc(userRef, updatedProfile);

@@ -1,5 +1,5 @@
 const express = require("express");
-// const userRoutes = require("./routes/userRoutes");
+const userRoutes = require("./routes/userRoutes");
 const middlewares = require("./middlewares");
 const authRoutes = require("./routes/authRoutes");
 const recipeRoutes = require("./routes/recipeRoutes");
@@ -12,7 +12,7 @@ middlewares(app);
 
 app.use("/auth", authRoutes);
 app.use("/recipe", recipeRoutes);
-// app.use("/user", userRoutes);
+app.use("/user", userRoutes);
 
 // 서버 시작
 app.listen(PORT, () => {
