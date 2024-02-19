@@ -3,7 +3,7 @@ const router = express.Router();
 const recipeService = require("../services/recipeService");
 
 // 음식 정보 조회
-router.get("/search/:foodName", async (req, res) => {
+router.get("/:foodName", async (req, res) => {
   const foodName = req.params.foodName;
 
   try {
@@ -16,11 +16,6 @@ router.get("/search/:foodName", async (req, res) => {
     console.error("Food Info Error: ", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
-});
-
-router.get("/recommend", async (req, res) => {
-  try {
-  } catch (error) {}
 });
 
 module.exports = router;
