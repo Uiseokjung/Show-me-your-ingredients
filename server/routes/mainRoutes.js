@@ -6,7 +6,7 @@ const community = require("./communityRoutes");
 const auth = require("./authRoutes");
 
 router.get("/", (req, res) => {
-  res.send("Main Route");
+  res.send("Main Route")
 });
 
 router.use("/search", search);

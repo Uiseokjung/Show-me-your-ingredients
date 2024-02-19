@@ -25,7 +25,7 @@ const auth = getAuth(firebaseApp);
 middlewares(router);
 
 // 로그인
-router.post("/login", async (req, res) => {
+router.post("/signin", async (req, res) => {
   try {
     // Firbase Authentication을 사용하여 로그인 시도
     const { email, password } = req.body;
@@ -58,7 +58,7 @@ router.post("/login", async (req, res) => {
 });
 
 // 로그아웃
-router.post("/logout", async (req, res) => {
+router.post("/signout", async (req, res) => {
   try {
     // Firebase Authentication을 사용하여 로그아웃
     await signOut(auth);

@@ -1,6 +1,6 @@
 const express = require("express");
-const middlewares = require("./middlewares");
 const mainRoutes = require("./routes/mainRoutes");
+const middlewares = require("./middlewares");
 
 const app = express();
 const PORT = process.env.PORT || 3000;

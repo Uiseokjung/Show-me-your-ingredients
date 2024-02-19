@@ -8,7 +8,7 @@ async function getRemcommendRecipes(ingredients) {
 
 // Edamam Recipe Search API 요청에 필요한 APP_ID와 인증 키
 const APP_ID = "bbeb467d";
-const APP_KEY = "abbdd85c73056820f61ed273486c51ab";
+const APP_KEY = "abbdd85c73056820f61ed273486c51ab	—";
 
 async function searchFoodInfo(foodName) {
   try {
