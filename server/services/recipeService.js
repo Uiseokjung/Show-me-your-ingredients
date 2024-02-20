@@ -8,18 +8,10 @@ async function getRemcommendRecipes(ingredients) {
 
 // Edamam Recipe Search API 요청에 필요한 APP_ID와 인증 키
 const APP_ID = "bbeb467d";
-const APP_KEY = "abbdd85c73056820f61ed273486c51ab";
+const APP_KEY = "abbdd85c73056820f61ed273486c51ab	—";
 
 async function searchFoodInfo(foodName) {
   try {
-    // 데이터베이스에 해당 음식이 있는지 확인
-    const foodRef = admin.firestore().collection("foods").doc(foodName);
-    const doc = await foodRef.get();
-    if (!doc.exists) {
-      // 데이터베이스에 해당 음식이 없는 경우
-      throw new Error("음식을 찾을 수 없습니다.");
-    }
-
     // Edamam REcipe Search API에 요청을 보내기 위한 URL
     const url = `https://api.edamam.com/search?q=${foodName}&app_id=${APP_ID}&app_key=${APP_KEY}&to=1`;
 

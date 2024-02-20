@@ -1,0 +1,6 @@
+AIzaSyBEwO5QkUkk6q775cXpRpKdD_q02LKuY8U
+
+async function getRemcommendRecipes(ingredients) {
+  // 구현 필요
+  // 음식 재료를 기반으로 추천된 레시피를 가져오는 로직을 추가
+}
