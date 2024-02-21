@@ -57,11 +57,18 @@ router.post("/signout", async (req, res) => {
 });
 
 // 회원가입
+// 회원가입
 router.post("/signup", async (req, res) => {
   const { email, password, username } = req.body;
 
   try {
     // 이미 가입된 이메일인지 확인
+    const existingUser = await auth.getUserByEmail(email);
+    if (existingUser) {
+      return res.status(400).json({ error: "이미 가입된 이메일 주소입니다." });
+    }
+
+    // 가입된 이메일이 아닌 경우 신규 가입 처리
     const userRecord = await auth.createUser({
       email: email,
       password: password,
@@ -80,6 +87,7 @@ router.post("/signup", async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" }); // JSON 응답 반환
   }
 });
+
 
 // 사용자 프로필 조회
 router.get("/:userId/profile", async (req, res) => {
